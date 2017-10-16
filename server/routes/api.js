@@ -14,8 +14,8 @@ api.get('/', (req, res) => {
 //Handle socket connection and messaging here
 io.on('connection', function(socket){
   console.log('user connected');
-  io.emit('chat message', 'New connection');
-  //socket.broadcast.emit('chat message','New connection');
+  //io.emit('chat message', 'New connection');
+  socket.broadcast.emit('chat message','New connection');
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
